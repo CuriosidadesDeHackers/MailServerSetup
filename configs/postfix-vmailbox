@@ -1,0 +1,12 @@
+# ============================================================
+# /etc/postfix/vmailbox — Buzones virtuales locales
+# Formato: email    dominio/usuario/Maildir/
+# Tras editar ejecutar: postmap /etc/postfix/vmailbox
+# ============================================================
+
+mail@tudominio.com      tudominio.com/mail/Maildir/
+
+# Si tienes cuentas en otro proveedor que quieres relay,
+# añádelas también aquí para que Postfix las acepte antes
+# de comprobar transport_maps:
+# info@tudominio.com    tudominio.com/mail/Maildir/

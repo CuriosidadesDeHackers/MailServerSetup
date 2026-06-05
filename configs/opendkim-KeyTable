@@ -1,0 +1,6 @@
+# ============================================================
+# /etc/opendkim/KeyTable
+# Formato: selector._domainkey.dominio  dominio:selector:ruta_clave
+# ============================================================
+
+mail._domainkey.tudominio.com tudominio.com:mail:/etc/opendkim/keys/tudominio.com/mail.private

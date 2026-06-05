@@ -1,0 +1,8 @@
+# ============================================================
+# /etc/opendkim/TrustedHosts — Hosts internos de confianza
+# ============================================================
+
+127.0.0.1
+localhost
+tudominio.com
+mx.tudominio.com

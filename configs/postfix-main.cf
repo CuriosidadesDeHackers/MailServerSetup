@@ -1,0 +1,52 @@
+# ============================================================
+# /etc/postfix/main.cf
+# Sustituir tudominio.com y TU-IP por tus valores reales
+# ============================================================
+
+# ── Identidad del servidor ───────────────────────────────────
+myhostname = mx.tudominio.com
+mydomain = tudominio.com
+myorigin = tudominio.com
+
+# ── Red ─────────────────────────────────────────────────────
+inet_interfaces = all
+inet_protocols = ipv4
+mydestination = localhost
+mynetworks = 127.0.0.0/8
+
+# ── Buzones virtuales ────────────────────────────────────────
+virtual_mailbox_domains = tudominio.com
+virtual_mailbox_base = /var/mail/vhosts
+virtual_mailbox_maps = hash:/etc/postfix/vmailbox
+virtual_uid_maps = static:5000
+virtual_gid_maps = static:5000
+virtual_mailbox_limit = 0
+virtual_alias_maps = hash:/etc/postfix/virtual
+
+# ── Relay a proveedores externos ────────────────────────────
+# (para cuentas que deben entregarse en otro servidor)
+transport_maps = hash:/etc/postfix/transport
+
+# ── TLS ─────────────────────────────────────────────────────
+smtp_tls_security_level = may
+smtpd_tls_cert_file = /etc/letsencrypt/live/mail.tudominio.com/fullchain.pem
+smtpd_tls_key_file = /etc/letsencrypt/live/mail.tudominio.com/privkey.pem
+smtpd_tls_security_level = may
+
+# ── Autenticación SASL (Dovecot) ─────────────────────────────
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+smtpd_relay_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+
+# ── DKIM (OpenDKIM milter) ───────────────────────────────────
+milter_default_action = accept
+milter_protocol = 6
+smtpd_milters = inet:localhost:12301
+non_smtpd_milters = inet:localhost:12301
+
+# ── Límites ─────────────────────────────────────────────────
+message_size_limit = 52428800
+
+# ── Compatibilidad ──────────────────────────────────────────
+compatibility_level = 3.6

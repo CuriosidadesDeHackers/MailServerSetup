@@ -1,0 +1,6 @@
+# ============================================================
+# /etc/opendkim/SigningTable
+# Formato: patrón_email  selector._domainkey.dominio
+# ============================================================
+
+*@tudominio.com mail._domainkey.tudominio.com

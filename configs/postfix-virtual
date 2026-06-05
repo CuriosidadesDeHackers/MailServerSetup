@@ -1,0 +1,12 @@
+# ============================================================
+# /etc/postfix/virtual — Alias virtuales
+# Tras editar ejecutar: postmap /etc/postfix/virtual
+# ============================================================
+
+# Redirigir correos sin usuario específico al buzón principal
+# (catch-all — comentar si no se desea)
+# @tudominio.com    mail@tudominio.com
+
+# Alias específicos
+# webmaster@tudominio.com    mail@tudominio.com
+# admin@tudominio.com        mail@tudominio.com

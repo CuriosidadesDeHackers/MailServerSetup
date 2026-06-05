@@ -1,0 +1,12 @@
+# ============================================================
+# /etc/postfix/transport — Relay de cuentas a otros servidores
+# Útil cuando una cuenta debe entregarse en un proveedor externo
+# (OVH, Gmail, etc.) en vez de almacenarse localmente
+# Tras editar ejecutar: postmap /etc/postfix/transport
+# ============================================================
+
+# Ejemplo: info@ se reenvía al servidor de OVH
+# info@tudominio.com    smtp:[mx1.mail.ovh.net]:25
+
+# Ejemplo: info@ se reenvía a Gmail
+# info@tudominio.com    smtp:[smtp-relay.gmail.com]:587

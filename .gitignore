@@ -1,0 +1,7 @@
+# Ignorar archivos con datos sensibles
+*.private
+*.pem
+*.key
+users
+*.db
+.env
